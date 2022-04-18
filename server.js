@@ -13,6 +13,8 @@ import errorHandlerMiddleware from './error/not-found.js'
 
 app.use(express.json())
 
+// app.use(express.static('./client'))
+
 app.get('/', (req, res) => {
   res.send('server app')
 })
