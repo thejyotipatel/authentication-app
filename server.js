@@ -5,8 +5,7 @@ dotenv.config()
 const session = require('express-session')
 const passport = require('passport')
 require('./passports/auth')
-
-const { register } = require('./controllers/authController')
+const router = require('./routers/authRouter')
 
 const isLogin = (req, res, next) => {
   req.user ? next() : res.sendStatus(401)
@@ -18,11 +17,7 @@ app.use(session({ secret: 'cats' }))
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.get('/', register)
-// (req, res) => {
-//   res.send('<a href="/auth/google">Authentication with Google</a>')
-// })
-
+app.use('/', router)
 app.get(
   '/auth/google',
   passport.authenticate('google', { scope: ['email', 'profile'] })

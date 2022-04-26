@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
-const { login, register, updateUser } = '../controllers/authController'
+const authController = require('../controllers/authController')
+
+router.get('/register', authController.register)
 
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 
@@ -13,4 +15,4 @@ router.get(
   })
 )
 
-module.export = router
+module.exports = router
