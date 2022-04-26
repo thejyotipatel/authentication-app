@@ -1,8 +1,8 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
   return (
-    <div className='profile-contaner'>
+    <>
       <button className='info-btn'>
         <span>!</span>
       </button>
@@ -25,10 +25,10 @@ const Profile = () => {
           <p className='email'>maya@gmail.com</p>
         </div>
       </div>
-      <a href='#' className='edit-btn'>
+      <Link to='/edit-profile' className='edit-btn'>
         Edit profile
-      </a>
-    </div>
+      </Link>
+    </>
   )
 }
 

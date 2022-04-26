@@ -1,9 +1,16 @@
-import express from 'express'
+const express = require('express')
 const router = express.Router()
-import { login, register, updateUser } from '../controllers/authController.js'
+const passport = require('passport')
+const { login, register, updateUser } = '../controllers/authController'
 
-router.route('/register').post(register)
-router.route('/login').post(login)
-router.route('/updateUser').patch(updateUser)
+router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 
-export default router
+router.get(
+  '/google/callback',
+  passport.authenticate('google', {
+    successRedireact: 'http://localhost:3000/',
+    failureRedireact: '/login/failed',
+  })
+)
+
+module.export = router

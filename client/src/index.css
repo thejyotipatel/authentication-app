@@ -5,13 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.App {
-  text-align: center;
-}
-
-.App-contant {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -36,6 +29,7 @@ body {
   justify-content: center;
   width: 30px;
   height: 30px;
+  top: 1em;
   border-radius: 50%;
 }
 /* profile style */
@@ -78,6 +72,7 @@ img {
   background-color: blueviolet;
   border-radius: 0.5em;
   transition: all ease-in-out 0.2s;
+  margin-bottom: 1em;
 }
 @media screen and (max-width: 500px) {
   .details {
@@ -85,14 +80,14 @@ img {
   }
 }
 /* Edit Personal Details */
-.edit-profile {
-  width: min(95%, 1200px);
-  margin-inline: auto;
-}
+
 .edit-details {
   display: grid;
   grid-template-columns: auto auto;
+  place-content: center;
   gap: 1em;
+  align-self: center;
+  justify-content: center;
   margin: 1.5em 1em;
   width: 100%;
 }
@@ -103,18 +98,18 @@ img {
   }
 }
 /* input control style */
-.edit-details .input-control {
+.input-control {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
 }
 .ip-label {
-  margin: 0.4em 0;
+  margin: 0.3em 0;
   text-transform: capitalize;
 }
 .ip-control {
-  width: min(95%, 400px);
+  width: min(95%, 700px);
   padding: 0.5em;
   border: none;
   outline: none;
@@ -139,7 +134,7 @@ img {
   cursor: pointer;
   transition: all ease-in-out 0.2s;
   margin: 1em 0;
-  width: 100%;
+  width: min(90%, 200px);
 }
 .edit-btn:hover,
 .save-btn:hover {

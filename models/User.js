@@ -1,5 +1,5 @@
-import mongoos from 'mongoose'
-import validetar from 'validator'
+const mongoos = require('mongoose')
+const validetar = require('validator')
 const UserSchema = new mongoos.Schema({
   name: {
     type: String,

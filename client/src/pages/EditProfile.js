@@ -14,7 +14,8 @@ const EditProfile = () => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
   return (
-    <div className='edit-profile'>
+    // <div className='edit-profile'>
+    <>
       <header> Edit Personal Details</header>
       <form className='edit-details'>
         <InputControl
@@ -71,7 +72,7 @@ const EditProfile = () => {
           Save details
         </button>
       </form>
-    </div>
+    </>
   )
 }
 

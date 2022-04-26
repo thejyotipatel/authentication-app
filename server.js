@@ -1,35 +1,58 @@
-import express from 'express'
+const express = require('express')
 const app = express()
-import dotenv from 'dotenv'
+const dotenv = require('dotenv')
 dotenv.config()
+const session = require('express-session')
+const passport = require('passport')
+require('./passports/auth')
 
-// db
-import connectDB from './db/connect.js'
-// router
-import authRouter from './routers/authRouter.js'
-// middleware
-import notFoundMiddleware from './Middleware/not-found.js'
-import errorHandlerMiddleware from './error/not-found.js'
+const { register } = require('./controllers/authController')
+
+const isLogin = (req, res, next) => {
+  req.user ? next() : res.sendStatus(401)
+}
 
 app.use(express.json())
 
-// app.use(express.static('./client'))
+app.use(session({ secret: 'cats' }))
+app.use(passport.initialize())
+app.use(passport.session())
 
-app.get('/', (req, res) => {
-  res.send('server app')
+app.get('/', register)
+// (req, res) => {
+//   res.send('<a href="/auth/google">Authentication with Google</a>')
+// })
+
+app.get(
+  '/auth/google',
+  passport.authenticate('google', { scope: ['email', 'profile'] })
+)
+
+app.get(
+  '/google/callback',
+  passport.authenticate('google', {
+    successRedirect: '/protected',
+    failureRedirect: '/auth/failure',
+  })
+)
+
+app.get('/auth/failure', (req, res) => {
+  res.send('something went wrong...')
 })
 
-app.use('/api/v1/auth', authRouter)
+app.get('/protected', isLogin, (req, res) => {
+  res.send(`Name: ${req.user.displayName} <br/> <a href="/logout">logout</a>`)
+})
 
-app.use(notFoundMiddleware)
-app.use(errorHandlerMiddleware)
-
+app.get('/logout', (req, res) => {
+  req.logout()
+  req.session.destroy()
+  res.send(`<a href="/">Login agen</a>`)
+})
 const port = process.env.PORT || 5000
 
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URL)
-
     app.listen(port, () => {
       console.log(`server is listning on port ${port}...`)
     })
