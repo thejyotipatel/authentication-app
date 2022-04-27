@@ -22,8 +22,8 @@ const Register = () => {
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const google = () => {
+    window.open('http://localhost:5000/auth/google', '_self')
   }
   return (
     <Wrapper>
@@ -38,9 +38,9 @@ const Register = () => {
           <p>Register using Social Media</p>
         </div>
 
-        <form onSubmit={onSubmit} className='from-control'>
+        <div className='from-control'>
           <div className='btns'>
-            <button type='button' className='btn'>
+            <button type='button' className='btn' onClick={google}>
               <span>
                 <FcGoogle />
               </span>
@@ -59,7 +59,7 @@ const Register = () => {
               Register using Twitter
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </Wrapper>
   )
@@ -102,8 +102,6 @@ const Wrapper = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        max-width: 400px;
-        width: 400px;
         font-size: 18px;
         border: 0;
         transition: ease-in-out 0.3s linear;

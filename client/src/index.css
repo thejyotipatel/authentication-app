@@ -35,49 +35,38 @@ body {
 /* profile style */
 header {
   text-transform: capitalize;
+  text-align: center;
   font-size: 2em;
 }
 .details {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 1em;
+}
+.details p {
+  margin: 0.2em;
+  line-height: 1.5em;
 }
 img {
   width: 150px;
   height: 140px;
-  border: 2px solid hotpink;
+  border-radius: 50%;
+  border: 3px solid hotpink;
   margin: 0 auto;
 }
-.left,
-.right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-.left .bio,
-.address,
 .email {
   text-transform: none;
-}
-.left .bio,
-.left .name {
-  text-align: center;
 }
 .edit-btn {
   color: #fff;
   text-decoration: none;
   padding: 0.5em 1em;
   background-color: blueviolet;
-  border-radius: 0.5em;
+  border-radius: 0.2em;
   transition: all ease-in-out 0.2s;
-  margin-bottom: 1em;
-}
-@media screen and (max-width: 500px) {
-  .details {
-    grid-template-columns: auto;
-  }
+  margin: 1.5em 0;
 }
 /* Edit Personal Details */
 

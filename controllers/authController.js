@@ -11,12 +11,29 @@ const register = (req, res, next) => {
   }
 }
 
-// const login = (req, res) => {
-//   res.send('login')
-// }
+const loginFailure = (req, res) => {
+  res.send('something went wrong...')
+}
 
-// const updateUser = (req, res) => {
-//   res.send('update User')
-// }
+const isLogin = (req, res, next) => {
+  req.user ? next() : res.sendStatus(401)
+}
 
-module.exports = { register }
+const protected = (req, res) => {
+  if (req.user) {
+    res.status(200).json({
+      success: true,
+      message: 'successfull',
+      user: req.user,
+    })
+  }
+  // res.send(`Name: ${req.user.displayName} <br/> <a href="/logout">logout</a>`)
+}
+
+const logout = (req, res) => {
+  req.logout()
+  req.session.destroy()
+  res.send(`<a href="/register">Login agen</a>`)
+}
+
+module.exports = { register, loginFailure, isLogin, protected, logout }

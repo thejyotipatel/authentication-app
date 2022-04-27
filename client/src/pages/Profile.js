@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const Profile = () => {
+const Profile = ({ name, email, picture, bio }) => {
   return (
     <>
       <button className='info-btn'>
@@ -8,26 +8,17 @@ const Profile = () => {
       </button>
       <header>Personal details</header>
       <div className='details'>
-        <div className='left'>
-          <img src='' alt='img' />
-          <p className='name'>maya thethreedragens</p>
-          <p className='bio'>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime
-            laboriosam vel tenetur? Voluptatum.
-          </p>
-        </div>
-        <div className='right'>
-          <p className='address'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui,
-            dolores id? Esse, aut nisi.
-          </p>
-          <p className='phone-number'>1234567890</p>
-          <p className='email'>maya@gmail.com</p>
-        </div>
+        <img src={picture} alt='img' />
+        <p className='name'> {name}</p>
+        <p className='bio'>{bio ? bio : 'Hi, there.'}</p>
+
+        {/* <p className='phone-number'> </p> */}
+        <p className='email'> {email}</p>
+
+        <Link to='/edit-profile' className='edit-btn'>
+          Edit profile
+        </Link>
       </div>
-      <Link to='/edit-profile' className='edit-btn'>
-        Edit profile
-      </Link>
     </>
   )
 }

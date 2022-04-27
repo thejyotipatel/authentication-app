@@ -8,8 +8,8 @@ const initState = {
   phone: '',
   photo: null,
 }
-const EditProfile = () => {
-  const [value, setValue] = useState(initState)
+const EditProfile = ({ profile, setProfile }) => {
+  const [value, setValue] = useState(profile)
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
@@ -31,7 +31,7 @@ const EditProfile = () => {
           handleChange={handleChange}
           type='text'
           value={value.firstName}
-          name='firstName'
+          name='family_name'
         />
         {/* last name */}
         <InputControl
@@ -40,7 +40,7 @@ const EditProfile = () => {
           handleChange={handleChange}
           type='text'
           value={value.lastName}
-          name='lastName'
+          name='given_name'
         />
         {/*email name */}
         <InputControl
@@ -60,14 +60,7 @@ const EditProfile = () => {
           value={value.bio}
           name='bio'
         />
-        <InputControl
-          labelText='phone'
-          phText='1234567890'
-          handleChange={handleChange}
-          type='number'
-          value={value.phone}
-          name='phone'
-        />
+
         <button type='submit' className='save-btn'>
           Save details
         </button>
