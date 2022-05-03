@@ -1,4 +1,3 @@
-import EditProfile from './pages/EditProfile'
 import Profile from './pages/Profile'
 import Register from './pages/Register'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
@@ -22,13 +21,13 @@ function App() {
           throw new Error('auth error')
         })
         .then((res) => {
-          setProfile(res.user._json)
+          setProfile(res.user)
         })
         .catch((e) => console.log(e))
     }
     getUser()
   }, [])
-  // console.log(profile)
+  console.log(profile)
   return (
     <BrowserRouter>
       <Routes>
@@ -40,16 +39,6 @@ function App() {
         <Route
           path='/profile'
           element={profile ? <Profile {...profile} /> : <Navigate to='/' />}
-        />
-        <Route
-          path='/edit-profile'
-          element={
-            profile ? (
-              <EditProfile profile={profile} setProfile={setProfile} />
-            ) : (
-              <Navigate to='/' />
-            )
-          }
         />
       </Routes>
     </BrowserRouter>

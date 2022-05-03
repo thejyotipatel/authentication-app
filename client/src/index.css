@@ -14,24 +14,6 @@ body {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-/* info btn */
-.info-btn {
-  position: absolute;
-  right: 2em;
-  background-color: #fff;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  top: 1em;
-  border-radius: 50%;
-}
 /* profile style */
 header {
   text-transform: capitalize;
@@ -67,65 +49,4 @@ img {
   border-radius: 0.2em;
   transition: all ease-in-out 0.2s;
   margin: 1.5em 0;
-}
-/* Edit Personal Details */
-
-.edit-details {
-  display: grid;
-  grid-template-columns: auto auto;
-  place-content: center;
-  gap: 1em;
-  align-self: center;
-  justify-content: center;
-  margin: 1.5em 1em;
-  width: 100%;
-}
-
-@media screen and (max-width: 700px) {
-  .edit-details {
-    grid-template-columns: auto;
-  }
-}
-/* input control style */
-.input-control {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
-.ip-label {
-  margin: 0.3em 0;
-  text-transform: capitalize;
-}
-.ip-control {
-  width: min(95%, 700px);
-  padding: 0.5em;
-  border: none;
-  outline: none;
-  background-color: #eeeeee33;
-  color: #fff;
-  border-radius: 0.2em;
-  font-size: 18px;
-}
-.ip-control::placeholder {
-  color: #ffffff93;
-  text-transform: capitalize;
-}
-.save-btn {
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5em 1em;
-  background-color: blueviolet;
-  border-radius: 0.5em;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  cursor: pointer;
-  transition: all ease-in-out 0.2s;
-  margin: 1em 0;
-  width: min(90%, 200px);
-}
-.edit-btn:hover,
-.save-btn:hover {
-  background-color: rgb(113, 19, 201);
 }

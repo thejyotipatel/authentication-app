@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { BiUser } from 'react-icons/bi'
 import { FcGoogle } from 'react-icons/fc'
 import { BsGithub, BsTwitter } from 'react-icons/bs'
-import InputControl from '../components/InputControl'
 import styled from 'styled-components'
 
 const initalState = {
@@ -16,14 +15,11 @@ const initalState = {
 const Register = () => {
   const [value, setValue] = useState(initalState)
 
-  const toogleChange = () => {
-    setValue({ ...value, isMember: !value.isMember })
-  }
-  const handleChange = (e) => {
-    setValue({ ...value, [e.target.name]: e.target.value })
-  }
   const google = () => {
     window.open('http://localhost:5000/auth/google', '_self')
+  }
+  const github = () => {
+    window.open('http://localhost:5000/auth/github', '_self')
   }
   return (
     <Wrapper>
@@ -46,7 +42,7 @@ const Register = () => {
               </span>
               Register using Email
             </button>
-            <button type='button' className='btn'>
+            <button type='button' className='btn' onClick={github}>
               <span>
                 <BsGithub />
               </span>
@@ -104,6 +100,7 @@ const Wrapper = styled.div`
         align-items: center;
         font-size: 18px;
         border: 0;
+        cursor: pointer;
         transition: ease-in-out 0.3s linear;
 
         :hover {

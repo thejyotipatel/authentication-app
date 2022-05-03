@@ -1,22 +1,18 @@
 import { Link } from 'react-router-dom'
 
-const Profile = ({ name, email, picture, bio }) => {
+const Profile = ({ displayName, email, photos, bio }) => {
   return (
     <>
-      <button className='info-btn'>
-        <span>!</span>
-      </button>
       <header>Personal details</header>
       <div className='details'>
-        <img src={picture} alt='img' />
-        <p className='name'> {name}</p>
-        <p className='bio'>{bio ? bio : 'Hi, there.'}</p>
+        <img src={photos[0].value} alt='img' />
+        <p className='name'> {displayName}</p>
+        <p className='bio'>{bio ? bio : 'Hi, there 👋'}</p>
 
-        {/* <p className='phone-number'> </p> */}
-        <p className='email'> {email}</p>
+        <p className='email'> {email ? email : ''}</p>
 
-        <Link to='/edit-profile' className='edit-btn'>
-          Edit profile
+        <Link to='/' className='edit-btn'>
+          LogOut
         </Link>
       </div>
     </>
