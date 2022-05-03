@@ -1,20 +1,9 @@
-import { useState } from 'react'
 import { BiUser } from 'react-icons/bi'
 import { FcGoogle } from 'react-icons/fc'
 import { BsGithub, BsTwitter } from 'react-icons/bs'
 import styled from 'styled-components'
 
-const initalState = {
-  email: '',
-  name: '',
-  alertEmail: false,
-  alertName: false,
-  isMember: false,
-}
-
 const Register = () => {
-  const [value, setValue] = useState(initalState)
-
   const google = () => {
     window.open('http://localhost:5000/auth/google', '_self')
   }
@@ -48,12 +37,12 @@ const Register = () => {
               </span>
               Register using Github
             </button>
-            <button type='button' className='btn'>
+            {/* <button type='button' className='btn'>
               <span>
                 <BsTwitter />
               </span>
               Register using Twitter
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -83,13 +72,11 @@ const Wrapper = styled.div`
     width: min(95%, 1400px);
     margin-inline: auto;
     display: flex;
-    justify-items: center;
+    justify-content: center;
     align-items: center;
     flex-direction: row-reverse;
 
     .btns {
-      margin: 1em;
-      width: min(95%, 700px);
       .btn {
         padding: 0.5em 1em;
         border-radius: 2em;
@@ -109,9 +96,6 @@ const Wrapper = styled.div`
         span {
           margin-right: 0.2em;
           font-size: 1.5em;
-        }
-        :last-child span {
-          color: #2c65e0d1;
         }
       }
     }

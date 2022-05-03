@@ -27,7 +27,7 @@ function App() {
     }
     getUser()
   }, [])
-  console.log(profile)
+
   return (
     <BrowserRouter>
       <Routes>
@@ -38,7 +38,13 @@ function App() {
         />
         <Route
           path='/profile'
-          element={profile ? <Profile {...profile} /> : <Navigate to='/' />}
+          element={
+            profile ? (
+              <Profile {...profile} setProfile={setProfile} />
+            ) : (
+              <Navigate to='/' />
+            )
+          }
         />
       </Routes>
     </BrowserRouter>

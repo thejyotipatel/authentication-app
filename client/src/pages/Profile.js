@@ -1,6 +1,25 @@
 import { Link } from 'react-router-dom'
 
-const Profile = ({ displayName, email, photos, bio }) => {
+const Profile = ({ displayName, email, photos, bio, setProfile }) => {
+  const logout = async () => {
+    fetch('/logout', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Contant-Type': 'application/json',
+        'Access-Control-Allow-credentials': true,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) return
+        throw new Error('auth error')
+      })
+      .then((res) => {
+        setProfile(null)
+      })
+      .catch((e) => console.log(e))
+  }
   return (
     <>
       <header>Personal details</header>
@@ -11,7 +30,7 @@ const Profile = ({ displayName, email, photos, bio }) => {
 
         <p className='email'> {email ? email : ''}</p>
 
-        <Link to='/' className='edit-btn'>
+        <Link to='/' className='edit-btn' onClick={logout}>
           LogOut
         </Link>
       </div>

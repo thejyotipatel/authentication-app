@@ -3,10 +3,9 @@ const router = express.Router()
 const passport = require('passport')
 const authController = require('../controllers/authController')
 
-router.get('/', authController.register)
 router.get('/auth/failure', authController.loginFailure)
 
-router.get('/protected', authController.isLogin, authController.protected)
+router.get('/protected', authController.protected)
 
 router.get('/logout', authController.logout)
 
