@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const Profile = ({ displayName, email, photos, bio, setProfile }) => {
+const Profile = ({ displayName, email, photos, bio, setProfile, profile }) => {
   const logout = async () => {
     fetch('/logout', {
       method: 'GET',
@@ -20,6 +20,9 @@ const Profile = ({ displayName, email, photos, bio, setProfile }) => {
       })
       .catch((e) => console.log(e))
   }
+  const jsonKeys = Object.keys(profile)
+  const jsonValue = Object.values(profile)
+  console.log(Object.values(profile))
   return (
     <>
       <header>Personal details</header>
@@ -33,6 +36,16 @@ const Profile = ({ displayName, email, photos, bio, setProfile }) => {
         <Link to='/' className='edit-btn' onClick={logout}>
           LogOut
         </Link>
+      </div>
+      <div>
+        <tbody>
+          {jsonKeys.map((item, index) => {
+            return <th key={index}>{item}</th>
+          })}
+          {/* {jsonValue.map((item, index) => {
+            return <td key={index}>{item}</td>
+          })} */}
+        </tbody>
       </div>
     </>
   )

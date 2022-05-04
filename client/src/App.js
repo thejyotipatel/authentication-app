@@ -27,7 +27,8 @@ function App() {
     }
     getUser()
   }, [])
-
+  console.log(profile)
+  // console.log(Object.keys(profile))
   return (
     <BrowserRouter>
       <Routes>
@@ -40,7 +41,7 @@ function App() {
           path='/profile'
           element={
             profile ? (
-              <Profile {...profile} setProfile={setProfile} />
+              <Profile {...profile} profile={profile} setProfile={setProfile} />
             ) : (
               <Navigate to='/' />
             )
