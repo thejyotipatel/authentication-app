@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom'
+<<<<<<< HEAD
 const Profile = ({ setProfile, profile }) => {
+=======
+
+const Profile = ({ displayName, email, photos, bio, setProfile, profile }) => {
+>>>>>>> 618317b8470e26e902f2010ce4a4e770851afa98
   const logout = async () => {
     fetch('/logout', {
       method: 'GET',
@@ -19,6 +24,12 @@ const Profile = ({ setProfile, profile }) => {
       })
       .catch((e) => console.log(e))
   }
+<<<<<<< HEAD
+=======
+  const jsonKeys = Object.keys(profile)
+  const jsonValue = Object.values(profile)
+  console.log(Object.values(profile))
+>>>>>>> 618317b8470e26e902f2010ce4a4e770851afa98
   return (
     <>
       <header>Personal details</header>
@@ -33,6 +44,19 @@ const Profile = ({ setProfile, profile }) => {
           LogOut
         </Link>
       </div>
+<<<<<<< HEAD
+=======
+      <div>
+        <tbody>
+          {jsonKeys.map((item, index) => {
+            return <th key={index}>{item}</th>
+          })}
+          {/* {jsonValue.map((item, index) => {
+            return <td key={index}>{item}</td>
+          })} */}
+        </tbody>
+      </div>
+>>>>>>> 618317b8470e26e902f2010ce4a4e770851afa98
     </>
   )
 }

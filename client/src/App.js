@@ -27,6 +27,11 @@ function App() {
     }
     getUser()
   }, [])
+<<<<<<< HEAD
+=======
+  console.log(profile)
+  // console.log(Object.keys(profile))
+>>>>>>> 618317b8470e26e902f2010ce4a4e770851afa98
   return (
     <BrowserRouter>
       <Routes>
@@ -39,7 +44,11 @@ function App() {
           path='/profile'
           element={
             profile ? (
+<<<<<<< HEAD
               <Profile profile={profile} setProfile={setProfile} />
+=======
+              <Profile {...profile} profile={profile} setProfile={setProfile} />
+>>>>>>> 618317b8470e26e902f2010ce4a4e770851afa98
             ) : (
               <Navigate to='/' />
             )
